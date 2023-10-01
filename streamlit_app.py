@@ -174,9 +174,6 @@ st.set_page_config(page_title='AI NCREIF QUERY TOOL')
 st.title('AI NCREIF QUERY TOOL')
 
 query_input = st.text_input("Enter your query: ")
-try:
-    write_value = run_conversation(query_input)
-except:
-    write_value = "Example: What are historical office returns?"
+write_value = run_conversation(query_input)
 st.write(write_value)
 
