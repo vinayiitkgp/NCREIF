@@ -4,6 +4,8 @@ import pandas as pd
 import requests
 import streamlit as st
 
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
 def ncreif_api(url):
     print(url)
     r = requests.get(url)
@@ -11,7 +13,7 @@ def ncreif_api(url):
 
 
 def run_conversation(prompt):
-    openai.api_key = "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"
+    
     # Step 1: send the conversation and available functions to GPT
     #prompt = input("What is your query?: ")
     messages = [{"role": "user", "content": f"{prompt}"},
