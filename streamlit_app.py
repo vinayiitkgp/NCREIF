@@ -4,6 +4,7 @@ import pandas as pd
 import requests
 import streamlit as st
 import os
+import base64
 
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
@@ -175,9 +176,18 @@ st.title('AI NCREIF QUERY TOOL')
 
 query_input = st.text_input("Enter your query: ")
 try:
-    write_value = run_conversation(query_input)
+    df = run_conversation(query_input)
+    write_value = df
 except:
     write_value = "Example: What are historical office returns?"
     
 st.write(write_value)
+
+csv = df.to_csv(index=False)
+b64 = base64.b64encode(csv.encode()).decode()  # Encode to bytes and then decode to string
+href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Download CSV File</a>'
+
+# Provide a download link for the CSV
+st.markdown(href, unsafe_allow_html=True)
+
 
