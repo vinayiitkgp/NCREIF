@@ -194,8 +194,10 @@ st.markdown(href, unsafe_allow_html=True)
 
 # ...
 
+st.header("API URL and Parameters")
 # Ensure url is not None or empty before trying to parse it
 if url:
+    st.write(url + "\n")
     # Parse the URL
     parsed_url = urlparse(url)
     query_params = parse_qs(parsed_url.query)
