@@ -2,3 +2,4 @@ openai
 requests
 pydantic
 streamlit-pydantic
+urllib
