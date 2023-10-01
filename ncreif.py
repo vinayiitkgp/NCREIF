@@ -2,6 +2,7 @@ import openai
 import json
 import pandas as pd
 import requests
+import streamlit as st
 
 def ncreif_api(url):
     print(url)
@@ -9,10 +10,10 @@ def ncreif_api(url):
     return pd.DataFrame(r.json()['NewDataSet']['Result1']) #r.json() #df
 
 
-def run_conversation():
+def run_conversation(prompt):
     openai.api_key = "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"
     # Step 1: send the conversation and available functions to GPT
-    prompt = input("What is your query?: ")
+    #prompt = input("What is your query?: ")
     messages = [{"role": "user", "content": f"{prompt}"},
                 {"role": "system", "content": """
                  Take a deep breath and go step-by-step.
@@ -166,4 +167,13 @@ def run_conversation():
         #)  # get a new response from GPT where it can see the function response
         return function_response #second_response
 
-print(run_conversation())
+st.set_page_config(page_title='AI NCREIF QUERY TOOL')
+st.title('AI NCREIF QUERY TOOL')
+
+query_input = st.text_input("Enter your query: ")
+try:
+    write_value = run_conversation(query_input)
+except:
+    write_value = "Example: What are historical office returns?"
+st.write(write_value)
+
