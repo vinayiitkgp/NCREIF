@@ -5,13 +5,15 @@ import requests
 import streamlit as st
 import os
 import base64
+from urllib.parse import urlparse, parse_qs
 
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 def ncreif_api(url):
     print(url)
     r = requests.get(url)
-    return pd.DataFrame(r.json()['NewDataSet']['Result1']) #r.json() #df
+    
+    return pd.DataFrame(r.json()['NewDataSet']['Result1']), url #r.json() #df
 
 
 def run_conversation(prompt):
@@ -176,7 +178,7 @@ st.title('AI NCREIF QUERY TOOL')
 
 query_input = st.text_input("Enter your query: ")
 try:
-    df = run_conversation(query_input)
+    df,url = run_conversation(query_input)
     write_value = df
 except:
     write_value = "Example: What are historical office returns?"
@@ -189,5 +191,41 @@ href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Downlo
 
 # Provide a download link for the CSV
 st.markdown(href, unsafe_allow_html=True)
+
+# Parse the URL
+parsed_url = urlparse(url)
+query_params = parse_qs(parsed_url.query)
+
+# Extract and summarize the SELECT, KPI, Where, and GroupBy statements
+select_params = query_params.get('SELECT', [])
+kpi_params = query_params.get('KPI', [])
+where_params = query_params.get('Where', [])
+groupby_params = query_params.get('GroupBy', [])
+
+# Summarize SELECT parameters
+if select_params:
+    select_summary = select_params[0].split(',')
+    st.write("SELECT Statement Parameters:")
+    for param in select_summary:
+        st.write(f"- {param.strip()}")
+elif kpi_params:
+    st.write(f"KPI Parameter: {kpi_params[0]}")
+else:
+    st.write("No SELECT or KPI parameters found.")
+
+# Summarize Where parameters
+if where_params:
+    where_summary = where_params[0].split('and')
+    st.write("\nWhere Statement Parameters:")
+    for param in where_summary:
+        st.write(f"- {param.strip()}")
+else:
+    st.write("No Where statement parameters found.")
+
+# Summarize GroupBy parameters
+if groupby_params:
+    st.write(f"\nGroupBy Statement Parameters:\n- {groupby_params[0]}")
+else:
+    st.write("No GroupBy statement parameters found.")
 
 
