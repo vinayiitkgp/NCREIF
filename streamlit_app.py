@@ -192,40 +192,46 @@ href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Downlo
 # Provide a download link for the CSV
 st.markdown(href, unsafe_allow_html=True)
 
-# Parse the URL
-parsed_url = urlparse(url)
-query_params = parse_qs(parsed_url.query)
+# ...
 
-# Extract and summarize the SELECT, KPI, Where, and GroupBy statements
-select_params = query_params.get('SELECT', [])
-kpi_params = query_params.get('KPI', [])
-where_params = query_params.get('Where', [])
-groupby_params = query_params.get('GroupBy', [])
+# Ensure url is not None or empty before trying to parse it
+if url:
+    # Parse the URL
+    parsed_url = urlparse(url)
+    query_params = parse_qs(parsed_url.query)
 
-# Summarize SELECT parameters
-if select_params:
-    select_summary = select_params[0].split(',')
-    st.write("SELECT Statement Parameters:")
-    for param in select_summary:
-        st.write(f"- {param.strip()}")
-elif kpi_params:
-    st.write(f"KPI Parameter: {kpi_params[0]}")
+    # Extract and summarize the SELECT, KPI, Where, and GroupBy statements
+    select_params = query_params.get('SELECT', [])
+    kpi_params = query_params.get('KPI', [])
+    where_params = query_params.get('Where', [])
+    groupby_params = query_params.get('GroupBy', [])
+
+    # Summarize SELECT parameters
+    if select_params:
+        select_summary = select_params[0].split(',')
+        st.write("SELECT Statement Parameters:")
+        for param in select_summary:
+            st.write(f"- {param.strip()}")
+    elif kpi_params:
+        st.write(f"KPI Parameter: {kpi_params[0]}")
+    else:
+        st.write("No SELECT or KPI parameters found.")
+
+    # Summarize Where parameters
+    if where_params:
+        where_summary = where_params[0].split('and')
+        st.write("\nWhere Statement Parameters:")
+        for param in where_summary:
+            st.write(f"- {param.strip()}")
+    else:
+        st.write("No Where statement parameters found.")
+
+    # Summarize GroupBy parameters
+    if groupby_params:
+        st.write(f"\nGroupBy Statement Parameters:\n- {groupby_params[0]}")
+    else:
+        st.write("No GroupBy statement parameters found.")
 else:
-    st.write("No SELECT or KPI parameters found.")
-
-# Summarize Where parameters
-if where_params:
-    where_summary = where_params[0].split('and')
-    st.write("\nWhere Statement Parameters:")
-    for param in where_summary:
-        st.write(f"- {param.strip()}")
-else:
-    st.write("No Where statement parameters found.")
-
-# Summarize GroupBy parameters
-if groupby_params:
-    st.write(f"\nGroupBy Statement Parameters:\n- {groupby_params[0]}")
-else:
-    st.write("No GroupBy statement parameters found.")
+    st.write("URL is not provided or empty.")
 
 
