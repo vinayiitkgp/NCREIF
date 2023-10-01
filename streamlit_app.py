@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import requests
 import streamlit as st
+import os
 
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
