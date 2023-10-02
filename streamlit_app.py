@@ -186,12 +186,16 @@ def run_conversation(prompt):
 st.set_page_config(page_title='AI NCREIF QUERY TOOL')
 st.title('AI NCREIF QUERY TOOL')
 
+write_value = "Example: What are historical office returns?"
+
 query_input = st.text_input("Enter your query: ")
-try:
-    df,url = run_conversation(query_input)
-    write_value = df
-except:
-    write_value = "Example: What are historical office returns?"
+if query_input:
+    try:
+        df,url = run_conversation(query_input)
+        write_value = df
+    except:
+        write_value = "Error process query. Please try again."
+   
     
 st.write(write_value)
 
