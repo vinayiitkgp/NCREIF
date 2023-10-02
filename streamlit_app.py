@@ -197,7 +197,7 @@ if query_input:
         df,url = run_conversation(query_input)
         write_value = df
     except:
-        write_value = "Error process query. Please try again."
+        write_value = "Error processing query. Please try again."
    
     
 st.write(write_value)
