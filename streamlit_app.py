@@ -189,6 +189,8 @@ st.title('AI NCREIF QUERY TOOL')
 write_value = "Example: What are historical office returns?"
 
 query_input = st.text_input("Enter your query: ")
+
+df = pd.DataFrame()
 if query_input:
     try:
         df,url = run_conversation(query_input)
@@ -199,7 +201,7 @@ if query_input:
     
 st.write(write_value)
 
-if df:
+if len(df) > 0:
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # Encode to bytes and then decode to string
     href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Download CSV File</a>'
