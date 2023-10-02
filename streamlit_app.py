@@ -183,10 +183,10 @@ def run_conversation(prompt):
         #)  # get a new response from GPT where it can see the function response
         return function_response #second_response
 
-st.set_page_config(page_title='AI NCREIF QUERY TOOL')
-st.title('AI NCREIF QUERY TOOL')
+st.set_page_config(page_title='AI-POWERED NCREIF QUERY TOOL')
+st.title('AI-POWERED NCREIF QUERY TOOL')
 
-write_value = "Example: What are historical office returns?"
+write_value = "Example: What are historical office returns in Dallas?"
 
 query_input = st.text_input("Enter your query: ")
 
