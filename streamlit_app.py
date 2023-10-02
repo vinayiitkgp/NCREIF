@@ -212,9 +212,10 @@ if len(df) > 0:
     
     # ...
 
-st.header("API URL and Parameters")
+
 # Ensure url is not None or empty before trying to parse it
 if url != '':
+    st.header("API URL and Parameters")
     st.write(url + "\n")
     # Parse the URL
     parsed_url = urlparse(url)
@@ -252,6 +253,6 @@ if url != '':
     else:
         st.write("No GroupBy statement parameters found.")
 else:
-    st.write("URL is not provided or empty.")
+    st.write("")
 
 
