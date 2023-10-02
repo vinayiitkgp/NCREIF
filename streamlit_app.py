@@ -191,6 +191,7 @@ write_value = "Example: What are historical office returns?"
 query_input = st.text_input("Enter your query: ")
 
 df = pd.DataFrame()
+url = ''
 if query_input:
     try:
         df,url = run_conversation(query_input)
@@ -213,7 +214,7 @@ if len(df) > 0:
 
 st.header("API URL and Parameters")
 # Ensure url is not None or empty before trying to parse it
-if url:
+if url != '':
     st.write(url + "\n")
     # Parse the URL
     parsed_url = urlparse(url)
