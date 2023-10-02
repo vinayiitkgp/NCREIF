@@ -199,14 +199,15 @@ if query_input:
     
 st.write(write_value)
 
-csv = df.to_csv(index=False)
-b64 = base64.b64encode(csv.encode()).decode()  # Encode to bytes and then decode to string
-href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Download CSV File</a>'
-
-# Provide a download link for the CSV
-st.markdown(href, unsafe_allow_html=True)
-
-# ...
+if df:
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # Encode to bytes and then decode to string
+    href = f'<a href="data:file/csv;base64,{b64}" download="ncreif_query.csv">Download CSV File</a>'
+    
+    # Provide a download link for the CSV
+    st.markdown(href, unsafe_allow_html=True)
+    
+    # ...
 
 st.header("API URL and Parameters")
 # Ensure url is not None or empty before trying to parse it
