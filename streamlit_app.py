@@ -77,7 +77,10 @@ def run_conversation(prompt):
                     
                 Prompt: What are historical office and retail returns combined?
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20PropertyType IN (%27R%27, %27O%27)&GroupBy=YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
-                
+
+                Prompt: What are office returns in phoenix and dallas?
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20CBSAName IN ('AZ-Phoenix-Mesa-Scottsdale', 'TX-Dallas-Plano-Irving'
+
                  synonyms = {
                     'Market Value': 'MV',
                     'Net Operating Income':'NOI',
