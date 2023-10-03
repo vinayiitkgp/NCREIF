@@ -73,8 +73,11 @@ def run_conversation(prompt):
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=stdev(TotRet)%20as%20std_dev&Where=NPI=1 and [YYYYQ]%20%3E=20201%20and%20[YYYYQ]%20%3C=%2020232&GroupBy=[CBSAName]&Format=JSON&UserName=sdunphy@metlife.com&password=password
                     
                 Prompt: Summarize office returns by Year Built and quarter.
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]%20=%27O%27%20&GroupBy=[YrBuilt],YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
-                    
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]%20=%27O%27%20&GroupBy=[YrBuilt],[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
+
+                Prompt: What are retail returns by Property Type and Subtype between 1Q 2014 and 4Q 2018?
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [PropertyType]='R' and [YYYYQ]>=20141 and [YYYYQ]<=20184&GroupBy=[YYYYQ],[PropertyType],[PropertySubType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                
                 Prompt: What are historical office and retail returns?
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [PropertyType] IN ('R','O')&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
 
