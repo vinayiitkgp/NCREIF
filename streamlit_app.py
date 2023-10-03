@@ -76,10 +76,10 @@ def run_conversation(prompt):
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]%20=%27O%27%20&GroupBy=[YrBuilt],YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
                     
                 Prompt: What are historical office and retail returns?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType] IN (%27R%27, %27O%27)&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [PropertyType] IN ('R','O')&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
 
                 Prompt: What are office returns in phoenix and dallas?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName] IN ('AZ-Phoenix-Mesa-Scottsdale', 'TX-Dallas-Plano-Irving') and [PropertyType]=%27O%27&GroupBy=[YYYYQ],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [CBSAName] IN ('AZ-Phoenix-Mesa-Scottsdale','TX-Dallas-Plano-Irving') and [PropertyType]='O'&GroupBy=[YYYYQ],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
 
                  synonyms = {
                     'Market Value': 'MV',
