@@ -105,6 +105,8 @@ def run_conversation(prompt):
                     'Fund Type':'FundType',
                     'Fund':'FundType',
                     'ODCE':'D',
+                    'Start Date':'StartDate',
+                    'End Date':'EndDate',
                     'Denominator':'denom',
                     'Prior Market Value':'MVLag1',
                     'Capex':'Capex',
