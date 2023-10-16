@@ -46,13 +46,13 @@ def run_conversation(prompt):
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20YYYYQ=20232&GroupBy=[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Calculate apartment property returns in the Phoenix market.
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: What are historical apartment returns in the Phoenix market?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: What are historical retail returns in the Phoenix market?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27R%27&GroupBy=YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27R%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Show me office returns by market as of 2Q 2023.
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]=%27O%27%20and%20YYYYQ=20232&GroupBy=[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
