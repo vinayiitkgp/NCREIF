@@ -65,6 +65,9 @@ def run_conversation(prompt):
                 
                 Prompt: Calculate the volatility of property type returns between 1Q 2010 and 4Q 2020.
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=stdev(IncRet)%20as%20IncomeReturnVol,%20stdev(AppRet)%20as%20AppReturnVol,%20stdev(TotRet)%20as%20TotalRetVol&Where=NPI=1%20and%20[YYYYQ]%20%3E=20101%20and%20[YYYYQ]%20%3C=%2020204&GroupBy=[PropertyType]&Format=JSON&UserName=sdunphy@metlife.com&password=password
+
+                Prompt: Calculate the volatility of office returns between 1Q 2010 and 4Q 2020.
+                Answer: http://www.ncreif-api.com/API.aspx?SELECT=stdev(IncRet)%20as%20IncomeReturnVol,%20stdev(AppRet)%20as%20AppReturnVol,%20stdev(TotRet)%20as%20TotalRetVol&Where=NPI=1%20and%20[YYYYQ]%20%3E=20101%20and%20[YYYYQ]%20%3C=%2020204%20and%20[PropertyType]=%27O%27&GroupBy=[PropertyType]&Format=JSON&UserName=sdunphy@metlife.com&password=password
                     
                 Prompt: Calculate the sum of NOI, MV, and NRA for apartments by quarter.
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=sum(NOI)%20as%20NOI,%20sum(MV)%20as%20MarketValue,%20sum(NRA)%20as%20NRA&Where=[PropertyType]=%27A%27&GroupBy=[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
@@ -156,17 +159,14 @@ def run_conversation(prompt):
         temperature = .85,
         messages=messages,
         functions=functions,
-        function_call="auto",  # auto is default, but we'll be explicit
+        function_call="auto",  
     )
     response_message = response["choices"][0]["message"]
 
-    # Step 2: check if GPT wanted to call a function
     if response_message.get("function_call"):
-        # Step 3: call the function
-        # Note: the JSON response may not always be valid; be sure to handle errors
         available_functions = {
             "ncreif_api": ncreif_api,
-        }  # only one function in this example, but you can have multiple
+        }  
         function_name = response_message["function_call"]["name"]
         fuction_to_call = available_functions[function_name]
         function_args = json.loads(response_message["function_call"]["arguments"])
@@ -174,21 +174,16 @@ def run_conversation(prompt):
             url=function_args.get("url"),
         )
 
-        # Step 4: send the info on the function call and function response to GPT
-        messages.append(response_message)  # extend conversation with assistant's reply
+        messages.append(response_message) 
         messages.append(
             {
                 "role": "function",
                 "name": function_name,
                 "content": function_response,
             }
-        )  # extend conversation with function response
-        #second_response = openai.ChatCompletion.create(
-        #    model="gpt-3.5-turbo-0613",
-        #    messages=messages,
-        #)  # get a new response from GPT where it can see the function response
-        return function_response #second_response
-
+        )  
+        return function_response 
+        
 st.set_page_config(page_title='AI-POWERED NCREIF QUERY TOOL')
 st.title('AI-POWERED NCREIF QUERY TOOL')
 
