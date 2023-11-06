@@ -157,7 +157,7 @@ def run_conversation(prompt):
     
     
     response = openai.ChatCompletion.create(
-        model="gpt-4-0613",
+        model="gpt-4-1106-preview",
         temperature = .8,
         messages=messages,
         functions=functions,
