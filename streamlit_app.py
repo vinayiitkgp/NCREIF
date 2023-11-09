@@ -84,8 +84,8 @@ def run_conversation(prompt):
                 Prompt: Show me returns by Property type and Year Built as of 3Q 2023.
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[YYYYQ]=20233&GroupBy=[YrBuiltorLastRen],[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
 
-                Prompt: Show me returns by Property type as of 3Q 2023 where Year Built is after 4Q 2015.
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[YYYYQ]=20233%20and%20[YrBuiltorLastRen]>20154&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Prompt: Show me returns by Property type as of 3Q 2023 where Year Built is after 2015.
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[YYYYQ]=20233%20and%20[YrBuiltorLastRen]>2015&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
 
                 Prompt: What are retail returns by Property Type and Subtype between 1Q 2014 and 4Q 2018?
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [PropertyType]='R' and [YYYYQ]>=20141 and [YYYYQ]<=20184&GroupBy=[YYYYQ],[PropertyType],[PropertySubType]&Format=json&UserName=sdunphy@metlife.com&password=password
