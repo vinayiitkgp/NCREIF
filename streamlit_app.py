@@ -68,6 +68,9 @@ def run_conversation(prompt):
 
                 Prompt: Calculate the volatility of office returns between 1Q 2010 and 4Q 2020.
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=stdev(IncRet)%20as%20IncomeReturnVol,%20stdev(AppRet)%20as%20AppReturnVol,%20stdev(TotRet)%20as%20TotalRetVol&Where=NPI=1%20and%20[YYYYQ]%20%3E=20101%20and%20[YYYYQ]%20%3C=%2020204%20and%20[PropertyType]=%27O%27&GroupBy=[PropertyType]&Format=JSON&UserName=sdunphy@metlife.com&password=password
+
+                Prompt: Calculate the volatility of office returns between 1Q 2010 and 4Q 2020.
+                Answer: http://www.ncreif-api.com/API.aspx?SELECT=stdev(IncRet)%20as%20IncomeReturnVol,%20stdev(AppRet)%20as%20AppReturnVol,%20stdev(TotRet)%20as%20TotalRetVol&Where=NPI=1%20and%20[YYYYQ]%20%3E=20101%20and%20[YYYYQ]%20%3C=%2020204%20and%20[PropertyType]=%27O%27&GroupBy=[PropertyType]&Format=JSON&UserName=sdunphy@metlife.com&password=password
                     
                 Prompt: Calculate the sum of NOI, MV, and NRA for apartments by quarter.
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=sum(NOI)%20as%20NOI,%20sum(MV)%20as%20MarketValue,%20sum(NRA)%20as%20NRA&Where=[PropertyType]=%27A%27&GroupBy=[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
