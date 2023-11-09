@@ -90,6 +90,9 @@ def run_conversation(prompt):
                 Prompt: What are office returns in phoenix and dallas?
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [CBSAName] IN ('AZ-Phoenix-Mesa-Scottsdale','TX-Dallas-Plano-Irving') and [PropertyType]='O'&GroupBy=[YYYYQ],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
 
+                Prompt: Calculate Same Store NOI by property type between 1Q 2000 and 4Q 2007.
+                Answer: http://www.ncreif-api.com/API.aspx?Select=sum(NOI)%20as%20NOI&Where=NPI=1%20and%20[YYYYQ]>=20001%20AND%20[YYYYQ]%20<=20074%20AND%20[StartDate]<20001%20AND%20[EndDate]>=20074&GroupBy=%5BPropertyType%5D,%5BYYYYQ%5D&Format=json&UserName=sdunphy@metlife.com&password=password
+                
                  synonyms = {
                     'Market Value': 'MV',
                     'Net Operating Income':'NOI',
