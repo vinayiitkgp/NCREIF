@@ -96,7 +96,7 @@ def run_conversation(prompt):
                  synonyms = {
                     'Market Value': 'MV',
                     'Net Operating Income':'NOI',
-                    'Year Built':'YrBuilt',
+                    'Year Built':'YrBuiltorLastRen',
                     'Region':'Region',
                     'Capital Expenditures':'CapEx',
                     'CapEx':'CapEx',
