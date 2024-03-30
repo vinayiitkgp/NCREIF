@@ -135,17 +135,6 @@ def run_conversation(prompt):
                     'Industrial':'I',
                     'Apartments':'A',
                     'Hotels':'H',
-                    'New York':'NY-NJ-New York-Jersey City-White Plains',
-                    'Los Angeles':'CA-Los Angeles-Long Beach-Glendale',
-                    'Washington DC':'DC-VA-MD-WV-Washington-Arlington-Alexandria',
-                    'Riverside':'CA-Riverside-San Bernardino-Ontario',
-                    'Chicago':'IL-Chicago-Naperville-Arlington Heights',
-                    'Dallas':'TX-Dallas-Plano-Irving',
-                    'Seattle':'WA-Seattle-Bellevue-Everett',
-                    'San Francisco':'CA-San Francisco-Redwood City-South San Francisco',
-                    'Atlanta':'GA-Atlanta-Sandy Springs-Roswell',
-                    'Boston':'MA-Boston',
-                    }
                  """ 
                  
                  }]
