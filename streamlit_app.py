@@ -32,6 +32,7 @@ def run_conversation(prompt):
                  5. Construct the select statement in SQL style; however, any parameters in the group statement should not be in the select statement.
                  6.When 'as of' is used it refers to a where statement for YYYYQ. 
                  7.YYYYQ is numeric and should not have quotes. 
+                 8. Market or CBSA refers to Census CBSA codes. When asked for a markt, use the CBSA code for that market (e.g. Phoenix = 38060)
                  Here are example prompts and the URL that should be passed to the function. Be sure to include all where statements as appropriate.
                 Prompt: Give me historical returns by property type?
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1&GroupBy=[PropertyType],[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
@@ -40,22 +41,22 @@ def run_conversation(prompt):
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1&GroupBy=[PropertyType],[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Calculate property returns in the Phoenix market by property type?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27&GroupBy=[PropertyType],YYYYQ&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSA]=38060&GroupBy=[CBSA],[CBSAName],[PropertyType],[YYYYQ]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: What are returns in the phoenix market by property type as of 2Q 2023?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20YYYYQ=20232&GroupBy=[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSA]=38060%20and%20YYYYQ=20232&GroupBy=[CBSA],[CBSAName],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Calculate apartment property returns in the Phoenix market.
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSA]=38060%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[CBSA],[CBSAName],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: What are historical apartment returns in the Phoenix market?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSA]=38060%20and%20[PropertyType]=%27A%27&GroupBy=[YYYYQ],[CBSA],[CBSAName],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: What are historical retail returns in the Phoenix market?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSAName]=%27AZ-Phoenix-Mesa-Scottsdale%27%20and%20[PropertyType]=%27R%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[CBSA]=38060%20and%20[PropertyType]=%27R%27&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Show me office returns by market as of 2Q 2023.
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]=%27O%27%20and%20YYYYQ=20232&GroupBy=[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1%20and%20[PropertyType]=%27O%27%20and%20YYYYQ=20232&GroupBy=[CBSA],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
                 
                 Prompt: Calculate market value and net operating income by property type.
                 Answer: http://www.ncreif-api.com/API.aspx?SELECT=sum(NOI)%20as%20NOI,%20sum(MV)%20as%20MarketValue&Where=NPI=1&GroupBy=YYYYQ,[PropertyType]&Format=JSON&UserName=sdunphy@metlife.com&password=password
@@ -94,7 +95,7 @@ def run_conversation(prompt):
                 Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [PropertyType] IN ('R','O')&GroupBy=[YYYYQ],[PropertyType]&Format=json&UserName=sdunphy@metlife.com&password=password
 
                 Prompt: What are office returns in phoenix and dallas?
-                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [CBSAName] IN ('AZ-Phoenix-Mesa-Scottsdale','TX-Dallas-Plano-Irving') and [PropertyType]='O'&GroupBy=[YYYYQ],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
+                Answer: http://www.ncreif-api.com/API.aspx?KPI=Returns&Where=NPI=1 and [CBSAName] IN (38060,14300) and [PropertyType]='O'&GroupBy=[YYYYQ],[CBSA],[CBSAName]&Format=json&UserName=sdunphy@metlife.com&password=password
 
                 Prompt: Calculate Same Store NOI by property type between 1Q 2000 and 4Q 2007.
                 Answer: http://www.ncreif-api.com/API.aspx?Select=sum(NOI)%20as%20NOI&Where=NPI=1%20and%20[YYYYQ]>=20001%20AND%20[YYYYQ]%20<=20074%20AND%20[StartDate]<20001%20AND%20[EndDate]>=20074&GroupBy=%5BPropertyType%5D,%5BYYYYQ%5D&Format=json&UserName=sdunphy@metlife.com&password=password
@@ -125,7 +126,7 @@ def run_conversation(prompt):
                     'Capital Expenditures':'capex',
                     'NOI':'NOI',
                     'Square Feet':'SqFt',
-                    'Market':'CBSAName',
+                    'Market':'CBSA',
                     'Property Type':'PropertyType',
                     'Period':'YYYYQ',
                     'Quarter':'YYYYQ',
